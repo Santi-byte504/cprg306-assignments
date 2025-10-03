@@ -18,7 +18,7 @@ export default function NewItem(){
             <button onClick={decrement} disabled={Quantity === 1} className="rounded px-4 py-2 bg-gray-700 hover:bg-gray-300 hover:text-black disabled:bg-red-300 disabled:text-red-700">-</button>
             <button onClick={increment} disabled={Quantity === 20} className="rounded px-4 py-2 bg-gray-700 hover:bg-gray-300 hover:text-black disabled:bg-red-300 disabled:text-red-700">+</button>
         </div>
-         <p className="mt-2 text-xs">Allowed range: 1–20</p>
+         <p className="mt-2 text-xs">Allowed Range: 1 - 20</p>
         </section>
     )
 }
