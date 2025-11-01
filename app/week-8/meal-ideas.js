@@ -20,11 +20,15 @@ async function fetchMealIdeas(ingredients){
 
 export default function MealIdeas({ ingredients }) {
     const [mealIdea, setMealIdeas] = useState([]);
-    async function loadMealIdeas(){
-        const ideas = await fetchMealIdeas(ingredients);
-        setMealIdeas(ideas);
-    }
-    useEffect(() => { loadMealIdeas(); }, [ingredients]);
+
+    useEffect(() => {
+    let food = true;
+    (async () => {
+      const ideas = await fetchMealIdeas(ingredients);
+      if (food) setMealIdeas(ideas);
+    })();
+    return () => { food = false; };
+  }, [ingredients]);
 
 return (
     <div>
@@ -44,5 +48,3 @@ return (
     </div>
   );
 }
-
-
