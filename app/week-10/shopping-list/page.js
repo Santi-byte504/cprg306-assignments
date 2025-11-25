@@ -10,14 +10,15 @@ export default function Page() {
 const [items, otherItems] = useState([]);
 const [selectedItem, setSelectedItem] = useState("");
 const { user } = useUserAuth();
-
-async function loadItems() {
-  if (!user) return;
-  const loadedItems = await getItems(user.uid);
-  otherItems(loadedItems);
-}
+  
 useEffect(() => {
   if (!user) return;
+
+  async function loadItems() {
+    const loadedItems = await getItems(user.uid);
+    otherItems(loadedItems);
+  }
+
   loadItems();
 }, [user]);
 
